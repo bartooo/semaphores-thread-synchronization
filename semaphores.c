@@ -22,10 +22,10 @@ int TOTAL_MESSAGES;
 
 struct queue
 {
-    int current_size;
-    int first_normal_message;
-    int max_size;
-    char** array;
+    int current_size;   // Current number of messages in queue
+    int first_normal_message;   // Index of first message sent by Normal User
+    int max_size;   // Max size of queue
+    char** array;   // Pointer to array of pointers to messages
 };
 
 
@@ -71,6 +71,7 @@ void print_queue()
     printf("|\n");
 }
 
+/* Initializes queue of messages */
 int init_message_queue (int queue_size, int queue_entity_size)
 {
     int i;
@@ -93,7 +94,7 @@ int init_message_queue (int queue_size, int queue_entity_size)
     return 0;
 }
 
-
+/* Puts new message sent by VIP User to queue */
 int put_vip_message(char *message, int message_size)
 {
     sem_wait(&sem_empty);   // Assure that message will not be putted into full buffor
@@ -124,6 +125,7 @@ int put_vip_message(char *message, int message_size)
     return 0;
 }
 
+/* Puts new message sent by Normal User to queue */
 int put_normal_message(char *message, int message_size)
 {  
     sem_wait(&sem_empty);   // Assure that message will not be putted into full buffor 
@@ -149,6 +151,7 @@ int put_normal_message(char *message, int message_size)
     return 0;
 }
 
+/* Reads and removes first message in queue */
 int get_message(int max_message_size)
 {
     sem_wait(&sem_full);    // Assure that buffor is not empty
