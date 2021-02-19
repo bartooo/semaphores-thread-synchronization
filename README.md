@@ -7,7 +7,7 @@
 
 ## About <a name = "about"></a>
 
-Project solves the Producer-Consumer problem using semaphores. There are three types of Users:
+Project for SOI (Operating Systems) course at Warsaw University of Technology. Project solves the Producer-Consumer problem using semaphores. There are three types of Users:
 - VIP Users (Producer)
 - Normal Users (Producer)
 - Reader (Consumer)
